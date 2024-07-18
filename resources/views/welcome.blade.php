@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="antialiased bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+    @include('components.header')
+
     <div class="relative flex items-top justify-center min-h-screen sm:items-center py-4">
         @if (Route::has('login'))
             <div class="fixed top-0 right-0 px-6 py-4 sm:block">
@@ -25,41 +27,34 @@
  
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-                            </svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold">
-                                <a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a>
-                            </div>
-                        </div>
-                        <div class="ml-12">
-                            <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                Laravel memiliki dokumentasi yang luar biasa, lengkap mencakup setiap aspek dari framework ini...
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-                            </svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold">
-                                <a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a>
-                            </div>
-                        </div>
-                        <div class="ml-12">
-                            <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                Laracasts menawarkan ribuan tutorial video tentang Laravel, PHP, dan pengembangan JavaScript...
-                            </div>
-                        </div>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    @component('components.news-card', [
+                        'title' => 'Berita Pertama',
+                        'image' => 'https://via.placeholder.com/400',
+                        'date' => '2024-07-17',
+                        'description' => 'Ini adalah deskripsi singkat untuk berita pertama.'
+                    ])@endcomponent
+
+                    @component('components.news-card', [
+                        'title' => 'Berita Kedua',
+                        'image' => 'https://via.placeholder.com/400',
+                        'date' => '2024-07-16',
+                        'description' => 'Ini adalah deskripsi singkat untuk berita kedua.'
+                    ])@endcomponent
+
+                    @component('components.news-card', [
+                        'title' => 'Berita Ketiga',
+                        'image' => 'https://via.placeholder.com/400',
+                        'date' => '2024-07-15',
+                        'description' => 'Ini adalah deskripsi singkat untuk berita ketiga.'
+                    ])@endcomponent
+
+                    <!-- Tambahkan lebih banyak kartu berita sesuai kebutuhan -->
                 </div>
             </div>
-            <footer class="mt-8 bg-white dark:bg-gray-800 text-center w-full py-4">
-                Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-            </footer>
         </div>
     </div>
+
+    @include('components.footer')
 </body>
 </html>
